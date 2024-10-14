@@ -92,6 +92,9 @@ Nos modelos conceituais de dados, **atributos** são características ou proprie
 
 Os **relacionamentos** descrevem como as entidades interagem entre si. Eles são representados por losangos em diagramas ER e podem ser classificados de acordo com o número de entidades envolvidas:
 
+> **Representação Gráfica**:
+Nos diagramas de entidade-relacionamento (ER), os relacionamentos são representados por losangos, conectando as entidades envolvidas.
+
 - **Binário**: Envolve duas entidades (ex: "Cliente" e "Pedido").
 - **Ternário**: Envolve três entidades (ex: "Médico", "Paciente" e "Hospital").
 - **N-ário**: Envolve quatro ou mais entidades.

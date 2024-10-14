@@ -3,6 +3,12 @@
 A **modelagem conceitual de dados** é uma etapa fundamental no desenvolvimento de sistemas de informação, pois fornece uma representação abstrata dos dados que uma organização utiliza. 
 Este tipo de modelagem visa capturar os requisitos de informação e as regras de negócio, sem considerar fatores tecnológicos ou implementações específicas.
 
+![image](https://github.com/user-attachments/assets/3d354c60-2e8b-4f60-b52d-2dd3a6618946)
+
+![image](https://github.com/user-attachments/assets/29ddb435-ad55-4e18-8ad5-6ae92aba2a25)
+
+
+
 ## Objetivos da Modelagem Conceitual
 
 - **Representação Abstrata**: O modelo conceitual estabelece uma visão geral das entidades e seus relacionamentos, permitindo uma compreensão clara do domínio do problema.
@@ -43,6 +49,9 @@ As **entidades** são os objetos ou conceitos do mundo real que possuem relevân
 As entidades são representadas graficamente por retângulos em diagramas de entidade-relacionamento (ER) . Cada entidade possui um conjunto de características que a definem.
 
 #### **Tipos de Entidades**
+
+![image](https://github.com/user-attachments/assets/2d65ce36-4328-41c8-913c-12f3ba22dfde)
+
 > **Entidades Fortes**
 As entidades fortes são aquelas que possuem uma identidade própria e não dependem de outras entidades para sua existência. Elas podem ser identificadas unicamente por seus atributos. Exemplos incluem:
 Cliente: Cada cliente tem um identificador único, como um CPF ou ID.
@@ -64,6 +73,9 @@ Item de Pedido: Um item de pedido só faz sentido no contexto de um pedido espec
 - Dependência Existencial: Uma entidade fraca só existe se houver uma entidade forte associada a ela.
 - Identificador Combinado: O identificador da entidade fraca inclui o identificador da entidade forte ao qual está relacionada.
 Exemplo: Dependente (que depende do empregador), Item de Pedido (que depende do pedido)
+![image](https://github.com/user-attachments/assets/ef68b09d-e8b7-4208-ab5f-59cf4d0de3ce)
+
+
 
 ### Atributos
 
@@ -71,11 +83,21 @@ Nos modelos conceituais de dados, **atributos** são características ou proprie
 
 #### **Tipos de Atributos**
 - **Simples**: São aqueles que não podem ser subdivididos em partes menores. Eles representam valores atômicos e são fundamentais para a identificação e descrição das entidades.
+  ![image](https://github.com/user-attachments/assets/d1b6fd86-6cd7-4164-ac9d-673ad3c920d3)
+
 - **Identificadores**: São aqueles que identificam ou compõem a identificação única de uma ocorrência em uma entidade. Exemplos incluem números de registro, IDs, etc.
+  ![image](https://github.com/user-attachments/assets/43b0e7a0-03aa-4c24-856a-26b7edf45d57)
+
 - **Não Identificadores**: Correspondem à maioria das ocorrências de uma entidade e podem ser opcionais ou obrigatórios. Exemplos incluem nome, idade, etc.
 - **Multivalorados**: Representam mais de uma ocorrência de valor de um atributo dentro de uma mesma instância de uma entidade. Exemplos incluem telefones, emails, etc., onde uma pessoa pode ter múltiplas formas de contato.
+   ![image](https://github.com/user-attachments/assets/f043d290-8211-4772-b1e3-e28a8068acf3)
+
 - **Compostos**: São utilizados para representar mais de um tipo de informação em um atributo. Exemplos incluem endereços completos, que podem ser compostos por rua, número, cidade, estado, país, etc.
+  ![image](https://github.com/user-attachments/assets/c9d5411e-c2ca-4072-b5d6-a0e5ef48fee2)
+
 - **Derivados**: São aqueles cujo valor pode ser calculado ou obtido a partir de outros atributos. Eles não são armazenados diretamente no banco de dados, mas são gerados quando necessário.
+  ![image](https://github.com/user-attachments/assets/e57e4a46-0db2-496e-83df-3ce28233fd37)
+
 
 #### Estrutura e Representação
 
@@ -99,12 +121,21 @@ Nos diagramas de entidade-relacionamento (ER), os relacionamentos são represent
 - **Ternário**: Envolve três entidades (ex: "Médico", "Paciente" e "Hospital").
 - **N-ário**: Envolve quatro ou mais entidades.
 
+![image](https://github.com/user-attachments/assets/760a4fcb-f676-4a58-ab0b-aa8165c6bed3)
+
+
 Além disso, os relacionamentos têm características importantes como:
 
 - **Cardinalidade**: Define quantas instâncias de uma entidade podem se relacionar com outra. Exemplos incluem:
   - Um para Um (1:1)
   - Um para Muitos (1:N)
   - Muitos para Muitos (M:N).
+ ![image](https://github.com/user-attachments/assets/af49a3c0-d7f3-4e45-a5fb-b7c36b823771)
 
 - **Grau do Relacionamento**: Refere-se ao número de entidades que participam do relacionamento. Por exemplo, um relacionamento binário envolve duas entidades, enquanto um ternário envolve três.
+- ![image](https://github.com/user-attachments/assets/7d240476-8e0d-4f24-8a01-688239877776)
 
+
+## Resumo
+
+![image](https://github.com/user-attachments/assets/78cc3b8b-e2d2-4da9-93ba-f03a0e80ac80)

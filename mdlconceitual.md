@@ -47,10 +47,23 @@ As entidades são representadas graficamente por retângulos em diagramas de ent
 As entidades fortes são aquelas que possuem uma identidade própria e não dependem de outras entidades para sua existência. Elas podem ser identificadas unicamente por seus atributos. Exemplos incluem:
 Cliente: Cada cliente tem um identificador único, como um CPF ou ID.
 Produto: Cada produto é identificado por um código ou nome.
+
+**Características:**
+- Independência Existencial: Uma entidade forte pode existir independentemente de qualquer outra entidade.
+- Chave Primária Autônoma: Possui uma chave primária própria que a identifica exclusivamente.
+
+Exemplo: Cliente, Produto, Funcionário
+
+
 > **Entidades Fracas**
 As entidades fracas dependem de outra entidade (chamada de entidade forte) para sua identificação e existência. Elas não têm uma chave primária própria e são geralmente identificadas em conjunto com a entidade forte. Exemplos incluem:
 Dependente: Um dependente pode ser identificado apenas em relação a um cliente específico.
 Item de Pedido: Um item de pedido só faz sentido no contexto de um pedido específico.
+
+**Características**:
+- Dependência Existencial: Uma entidade fraca só existe se houver uma entidade forte associada a ela.
+- Identificador Combinado: O identificador da entidade fraca inclui o identificador da entidade forte ao qual está relacionada.
+Exemplo: Dependente (que depende do empregador), Item de Pedido (que depende do pedido)
 
 ### Atributos
 
@@ -90,5 +103,5 @@ Além disso, os relacionamentos têm características importantes como:
   - Um para Muitos (1:N)
   - Muitos para Muitos (M:N).
 
-- **Grau do Relacionamento**: Refere-se ao número de entidades que participam do relacionamento. Por exemplo, um relacionamento binário envolve duas entidades, enquanto um ternário envolve três [2][4].
+- **Grau do Relacionamento**: Refere-se ao número de entidades que participam do relacionamento. Por exemplo, um relacionamento binário envolve duas entidades, enquanto um ternário envolve três.
 

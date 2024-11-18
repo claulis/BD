@@ -107,5 +107,7 @@ Imagine que você está desenvolvendo um sistema de cadastro de clientes:
    - Para renomear tabelas ou colunas, o SQL Server utiliza `sp_rename`, enquanto o MySQL tem comandos específicos (`RENAME TABLE`).
   
 ### Exemplos DDL
+1. https://github.com/claulis/BD/blob/main/ddl/ddl_create_mysql.sql
+2. https://github.com/claulis/BD/blob/main/ddl/ddl_create_tsql.sql
 
 

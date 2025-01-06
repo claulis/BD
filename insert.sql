@@ -1,3 +1,21 @@
+CREATE DATABASE db_empresa;
+GO
+USE db_empresa;
+CREATE TABLE t_departamento (
+ id_departamento INT IDENTITY(1,1) PRIMARY KEY,  
+ nome VARCHAR(100) NOT NULL,                      
+ descricao VARCHAR(255)                           
+    ); 
+CREATE TABLE t_funcionario (
+id_funcionario INT IDENTITY(1,1) PRIMARY KEY,    
+nome VARCHAR(100) NOT NULL,                      
+cargo VARCHAR(100),                               
+salario DECIMAL(10, 2),                           
+id_departamento INT,                              
+FOREIGN KEY (id_departamento) REFERENCES
+t_departamento(id_departamento) 
+);
+
 INSERT INTO t_departamento (nome, descricao)
 VALUES 
 ('Recursos Humanos', 'Departamento responsável pela gestão de pessoas'),

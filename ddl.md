@@ -5,7 +5,7 @@ A **DDL (Data Definition Language)**, ou **Linguagem de Definição de Dados**, 
 Ela é essencial para criar e gerenciar objetos como **bancos de dados**, **tabelas**, **índices**, **visões** e **esquemas**, definindo a base sobre a qual os dados serão organizados e manipulados.
 
 
-### **Principais Funções da DDL**
+## **Principais Funções da DDL**
 1. **Definir Estruturas de Dados**
    - Criar bancos de dados, tabelas, colunas, índices e outros objetos que armazenarão ou facilitarão o acesso aos dados.
    
@@ -37,7 +37,7 @@ Ela é essencial para criar e gerenciar objetos como **bancos de dados**, **tabe
  
 
 ---
-### **Listas de Comandos**
+## **Listas de Comandos**
 
 | **Comando**              | **Descrição**                                                                                   | **MySQL**                                                                                         | **SQL Server**                                                                                   |
 |---------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
@@ -106,6 +106,118 @@ Imagine que você está desenvolvendo um sistema de cadastro de clientes:
 4. **Alteração de Objetos**  
    - Para renomear tabelas ou colunas, o SQL Server utiliza `sp_rename`, enquanto o MySQL tem comandos específicos (`RENAME TABLE`).
   
+--
+
+## **VIEWS**
+
+Uma view de banco de dados (ou "visão") é uma tabela virtual composta pelo resultado de uma consulta SQL. Ela não contém dados fisicamente armazenados, mas oferece uma maneira de acessar e apresentar informações de outras tabelas em um formato personalizado e simplificado. Pense nela como uma "janela" para os dados: você define uma consulta SQL que filtra, organiza e manipula as informações, e a view apresenta essa visão dos dados como se fosse uma tabela.
+
+### Para que serve uma View?
+Abstrair a Complexidade de Consultas:
+1. Caso a consulta seja muito longa ou complexa, a view permite encapsular essa lógica. Assim, você pode reutilizá-la como uma tabela simples, sem a necessidade de recriar a consulta cada vez que precisar dela.
+Exemplo: Um relatório que requer dados de várias tabelas pode ser encapsulado por uma view para facilitar futuras interações.
+2. Aumentar a Segurança dos Dados:
+Você pode restringir o acesso a colunas ou informações sensíveis e permitir que os usuários acessem apenas a view. Isso impede que eles visualizem ou modifiquem dados diretamente nas tabelas.
+Exemplo: Em uma tabela de funcionários, você pode criar uma view que oculte os salários e outros dados confidenciais.
+3. Padronizar Acesso aos Dados:
+Views garantem consistência ao definir como os dados devem ser apresentados. Isso é útil, por exemplo, para criar fórmulas ou cálculos recorrentes que precisariam aparecer em relatórios.
+4. Facilitar a Integração com Aplicações:
+Você pode criar uma view simplificada para que um sistema ou aplicação acesse os dados sem se preocupar com a estrutura complexa do banco.
+
+### Quando usar uma View?
+1. Consulta Frequente:
+Quer encapsular uma consulta que será usada frequentemente para evitar repetições (ex.: relatórios mensais ou históricos de vendas).
+2. Acesso Restrito:
+Ao compartilhar apenas parte dos dados de uma tabela ou ao aplicar filtros específicos que limitam quais registros podem ser visualizados por determinados usuários.
+
+*Suponha que você tenha uma tabela de funcionários com informações sensíveis (salário, CPF, etc.), mas quer compartilhar apenas os nomes e os cargos.*
+
+Criando uma View:
+
+```Sql
+   CREATE VIEW vw_funcionarios_publicos AS
+   SELECT nome, cargo 
+   FROM funcionarios;
+```
+
+Assim, qualquer usuário que utilizar a view só verá os dados permitidos, mantendo a segurança.
+
+3. Consulta Complexa:
+Quando as consultas utilizam múltiplos joins, funções agregadas ou filtros complexos. Isso melhora a legibilidade e reduz a necessidade de repetir a lógica em diferentes partes do sistema.
+4. Organização e Manutenção do Banco de Dados:
+Para simplificar a estrutura lógica do banco, especialmente em sistemas grandes onde há muitos relacionamentos entre tabelas.
+Exemplos de Uso Prático:
+5. Simplificação de Consulta:
+
+*Se, por exemplo, você precisa obter o nome do cliente, o nome do produto e o valor total de um pedido, mas essa consulta exige relacionar três tabelas, você pode criar uma view para facilitar o acesso a esses dados.*
+
+Consulta Base:
+
+```Sql
+   SELECT 
+       c.nome AS cliente, 
+       p.nome_produto, 
+       o.valor_total 
+   FROM pedidos o
+   INNER JOIN clientes c ON o.id_cliente = c.id_cliente
+   INNER JOIN produtos p ON o.id_produto = p.id_produto;
+```
+
+Criando uma View:
+
+```Sql
+   CREATE VIEW vw_relatorio_pedidos AS
+   SELECT 
+       c.nome AS cliente, 
+       p.nome_produto, 
+       o.valor_total 
+   FROM pedidos o
+   INNER JOIN clientes c ON o.id_cliente = c.id_cliente
+   INNER JOIN produtos p ON o.id_produto = p.id_produto;
+```
+
+Usando a View:
+
+```Sql
+   SELECT * FROM vw_relatorio_pedidos WHERE valor_total > 1000;
+```
+
+Acesso Restrito:
+
+
+
+6. Relatórios Pré-definidos:
+
+Uma view pode ser usada para criar relatórios prontos, como vendas mensais, faturamento anual, desvios de orçamento, e outros dados frequentemente analisados.
+
+Exemplo de Relatório Mensal:
+
+```Sql
+Copiar
+   CREATE VIEW vw_vendas_mensais AS
+   SELECT 
+       MONTH(data_venda) AS mes,
+       YEAR(data_venda) AS ano,
+       SUM(valor_total) AS total_vendas
+   FROM vendas
+   GROUP BY YEAR(data_venda), MONTH(data_venda);
+```
+
+Agora, pode-se simplesmente consultar:
+
+```Sql
+   SELECT * FROM vw_vendas_mensais WHERE mes = 1 AND ano = 2025;
+```
+
+7. Manutenção: Caso você altere a definição de uma consulta dentro da view, todos os usuários e aplicações conectadas a ela usarão automaticamente a nova versão.
+8. Desempenho: Em alguns casos (dependendo do banco), views podem melhorar a performance ao armazenar planos de execução otimizados.
+
+>Views complexas em tabelas com muitos dados podem afetar o desempenho, principalmente aquelas com JOINs e funções agregadas. Avalie se uma view materializada não seria mais adequada.
+
+9. Dependências: Se a estrutura das tabelas base for alterada (ex.: nomes de colunas ou tipos de dados), a view pode se tornar inválida. Certifique-se de manter a consistência no design.
+
+10. Operações de Escrita: Nem todas as views permitem operações de INSERT, UPDATE ou DELETE. Quando permitem, mudanças feitas na view afetam diretamente as tabelas originais.
+
 ### Exemplos DDL
 1. https://github.com/claulis/BD/blob/main/ddl/ddl_create_mysql.sql
 2. https://github.com/claulis/BD/blob/main/ddl/ddl_create_tsql.sql

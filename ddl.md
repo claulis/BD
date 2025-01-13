@@ -66,7 +66,7 @@ Ela é essencial para criar e gerenciar objetos como **bancos de dados**, **tabe
 Imagine que você está desenvolvendo um sistema de cadastro de clientes:
 
 #### 1. **Criação de Estrutura**  
-   - Criar o banco de dados:  
+   - Criar o banco de dados:   
      ```sql
      CREATE DATABASE sistema_clientes;
      ```
